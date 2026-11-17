@@ -57,10 +57,10 @@ export function Hero() {
       </div>
       <div aria-hidden className="hero-scrim absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-end px-4 pb-14 pt-32 sm:px-6 md:pb-20 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-end px-4 pb-10 pt-28 sm:px-6 md:pb-12 lg:px-10">
         {/* Vertical cut reveal (after 21st.dev "vertical-cut-reveal"), done in CSS so
             the headline, the page's LCP, never waits on JavaScript to appear. */}
-        <h1 id="hero-title" className="display max-w-[14ch] text-[clamp(2rem,8.5vw,6rem)] uppercase">
+        <h1 id="hero-title" className="display max-w-[14ch] text-[clamp(2rem,min(8.5vw,13vh),5.2rem)] uppercase">
           {[["Your", "potential."], ["Your", "opportunity."]].map((line, l) => (
             <span key={l} className={l ? "block text-gold" : "block"}>
               {line.map((w, i) => (
@@ -72,11 +72,11 @@ export function Hero() {
             </span>
           ))}
         </h1>
-        <p className="mt-7 max-w-[46ch] text-lg leading-relaxed text-chalk/85 md:text-xl">
+        <p className="mt-5 max-w-[46ch] text-lg leading-relaxed text-chalk/85 md:text-xl">
           Challenge yourself. Understand your level. Create new opportunities, on and off the pitch.
         </p>
 
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Magnetic>
             <a
               href={SITE.apply}
