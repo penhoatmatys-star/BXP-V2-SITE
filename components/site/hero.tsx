@@ -34,7 +34,7 @@ export function Hero() {
   };
 
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+    <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[86svh] md:min-h-[100svh] flex-col overflow-hidden">
       <div aria-hidden className="absolute inset-0 -z-20 bg-night">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/video/hero-poster.jpg" alt="" className="h-full w-full object-cover object-[30%_center]" fetchPriority="high" />
@@ -57,10 +57,10 @@ export function Hero() {
       </div>
       <div aria-hidden className="hero-scrim absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-end px-4 pb-10 pt-28 sm:px-6 md:pb-12 lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-end px-4 pb-8 pt-24 sm:px-6 md:pb-12 lg:px-10">
         {/* Vertical cut reveal (after 21st.dev "vertical-cut-reveal"), done in CSS so
             the headline, the page's LCP, never waits on JavaScript to appear. */}
-        <h1 id="hero-title" className="display max-w-[14ch] text-[clamp(2rem,min(8.5vw,13vh),5.2rem)] uppercase">
+        <h1 id="hero-title" className="display max-w-[14ch] text-[clamp(1.9rem,min(8.5vw,13vh),5.2rem)] uppercase">
           {[["Your", "potential."], ["Your", "opportunity."]].map((line, l) => (
             <span key={l} className={l ? "block text-gold" : "block"}>
               {line.map((w, i) => (

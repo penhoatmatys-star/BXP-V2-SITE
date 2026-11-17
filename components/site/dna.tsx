@@ -92,7 +92,7 @@ export function Dna() {
 
   return (
     <section id="dna" aria-labelledby="dna-title" className="relative scroll-mt-20 overflow-hidden bg-night py-24 md:py-36">
-      <div className="mx-auto grid max-w-[1320px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
+      <div className="mx-auto grid grid-cols-1 max-w-[1320px] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
         <div>
           <h2 id="dna-title" className="display max-w-[12ch] text-[clamp(2.4rem,6vw,4.6rem)] uppercase">
             More than numbers. <span className="text-gold">Your DNA.</span>
@@ -132,7 +132,7 @@ export function Dna() {
         </div>
 
         {/* The laptop */}
-        <figure className="mx-auto w-full max-w-[780px]">
+        <figure className="mx-auto w-full min-w-0 max-w-[780px]">
           <div className="rounded-t-[20px] border border-[#34353a] bg-[#1a1b1f] p-2.5 pb-2 shadow-[0_40px_120px_-50px_rgba(230,189,81,0.35)] sm:p-3">
             <div className="relative overflow-hidden rounded-[10px] border border-line bg-night">
               <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2.5">
@@ -140,13 +140,13 @@ export function Dna() {
                   <i className="size-2.5 rounded-full bg-[#3a3b40]" /><i className="size-2.5 rounded-full bg-[#3a3b40]" /><i className="size-2.5 rounded-full bg-[#3a3b40]" />
                 </div>
                 <figcaption className="wide truncate text-[11px] font-bold uppercase tracking-[0.1em] text-chalk/90 sm:text-xs">BXP DNA Studio · Player profile</figcaption>
-                <span className="rounded border border-gold/40 px-1.5 py-0.5 text-[10px] uppercase tracking-[0.1em] text-gold">Illustration</span>
+                <span className="shrink-0 rounded border border-gold/40 px-1.5 py-0.5 text-[10px] uppercase tracking-[0.1em] text-gold">Illustration</span>
               </div>
 
-              <div className="grid gap-5 p-4 sm:p-5 md:grid-cols-[0.9fr_1.1fr]">
+              <div className="grid grid-cols-1 gap-5 p-3 sm:p-5 md:grid-cols-[0.9fr_1.1fr]">
                 {/* Radar */}
-                <div>
-                  <svg viewBox="-40 -6 380 312" role="img" aria-label="Example radar of the profile" className="mx-auto w-full max-w-[320px]">
+                <div className="min-w-0">
+                  <svg viewBox="-70 -6 440 312" role="img" aria-label="Example radar of the profile" className="mx-auto w-full max-w-[320px]">
                     {[2, 4, 6, 8, 10].map((r) => (<path key={r} d={shape(AXES.map(() => r))} fill="none" stroke="#2a2b2f" />))}
                     {AXES.map((_, i) => { const [x, y] = point(i, 10); return <line key={i} x1={C} y1={C} x2={x} y2={y} stroke="#2a2b2f" />; })}
                     <motion.path initial={false} animate={{ d: shape(scores) }} transition={{ type: "spring", stiffness: 110, damping: 18 }} fill="rgba(230,189,81,0.18)" stroke="#e6bd51" strokeWidth={2} strokeLinejoin="round" />
@@ -244,11 +244,11 @@ export function Dna() {
                 <button onClick={reset} className="inline-flex items-center gap-1.5 rounded border border-line px-3 py-2 text-xs font-semibold uppercase tracking-[0.06em] text-chalk/80 hover:border-silver/50">
                   <RotateCcw aria-hidden className="size-3.5" /> Reset
                 </button>
-                <div className="flex min-w-[140px] flex-1 items-center gap-3" aria-live="polite">
+                <div className="flex min-w-[120px] flex-1 items-center gap-3" aria-live="polite">
                   <div className="h-1 flex-1 overflow-hidden rounded-full bg-line">
                     <motion.div initial={false} animate={{ width: scanning ? `${((stage + 1) / SOURCES.length) * 100}%` : "100%" }} transition={{ duration: 0.6 }} className="h-full bg-gradient-to-r from-gold-deep to-gold" />
                   </div>
-                  <span className="min-w-[10.5rem] text-xs text-mute">{scanning ? SOURCES[stage].step : "Profile ready"}</span>
+                  <span className="min-w-0 text-xs text-mute">{scanning ? SOURCES[stage].step : "Profile ready"}</span>
                 </div>
               </div>
             </div>
