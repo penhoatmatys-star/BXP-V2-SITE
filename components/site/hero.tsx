@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowDownRight, ArrowUpRight, Pause, Play } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import Magnetic from "@/components/ui/magnetic";
 import { SITE } from "@/lib/site";
 
@@ -13,25 +13,12 @@ import { SITE } from "@/lib/site";
  */
 export function Hero() {
   const [film, setFilm] = useState(false);
-  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     setFilm(!reduce && !conn?.saveData);
   }, []);
-
-  const toggle = () => {
-    const v = document.getElementById("hero-film") as HTMLVideoElement | null;
-    if (!v) return;
-    if (v.paused) {
-      void v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
-  };
 
   return (
     <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[86svh] md:min-h-[100svh] flex-col overflow-hidden">
@@ -95,16 +82,6 @@ export function Hero() {
         </div>
       </div>
 
-      {film && (
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={playing ? "Pause background film" : "Play background film"}
-          className="absolute bottom-5 right-4 grid size-10 place-items-center rounded-full border border-chalk/25 bg-night/50 text-chalk/80 backdrop-blur transition-colors hover:border-gold hover:text-gold sm:right-6 lg:right-10"
-        >
-          {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
-        </button>
-      )}
     </section>
   );
 }
