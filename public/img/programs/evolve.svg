@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="g" cx="50%" cy="100%" r="90%"><stop offset="0" stop-color="#e6bd51" stop-opacity=".28"/><stop offset="1" stop-color="#e6bd51" stop-opacity="0"/></radialGradient><linearGradient id="f" x1="0" x2="1"><stop offset="0" stop-color="#e6bd51" stop-opacity="0"/><stop offset=".6" stop-color="#e6bd51" stop-opacity=".7"/><stop offset="1" stop-color="#ffe59d" stop-opacity="0"/></linearGradient></defs><rect width="800" height="1100" fill="#0d0e0f"/><rect width="800" height="1100" fill="url(#g)"/>
+<path d="M0 950 H170 V1100 H0 Z" fill="#e6bd51" fill-opacity=".03" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M110 820 H280 V1100 H110 Z" fill="#e6bd51" fill-opacity=".04" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M220 690 H390 V1100 H220 Z" fill="#e6bd51" fill-opacity=".05" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M330 560 H500 V1100 H330 Z" fill="#e6bd51" fill-opacity=".06" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M440 430 H610 V1100 H440 Z" fill="#e6bd51" fill-opacity=".07" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M550 300 H720 V1100 H550 Z" fill="#e6bd51" fill-opacity=".08" stroke="#e6bd51" stroke-opacity=".35"/>
+<path d="M660 170 H830 V1100 H660 Z" fill="#e6bd51" fill-opacity=".09" stroke="#e6bd51" stroke-opacity=".35"/>
+</svg>

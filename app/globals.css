@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* BXP world: a floodlit pitch at night. Black is the stadium after dark, gold is
+   the floodlight and the X of the mark, silver is the B and the P. */
+:root {
+  --night: #070708;
+  --pitch: #0d0e0f;
+  --stand: #15161a;
+  --line: #2a2b2f;
+  --gold: #e6bd51;
+  --gold-lit: #ffe59d;
+  --gold-deep: #9c7426;
+  --silver: #c9ccd1;
+  --chalk: #f4f3ef;
+  --mute: #9fa1a6;
+}
+
+@theme inline {
+  --color-night: var(--night);
+  --color-pitch: var(--pitch);
+  --color-stand: var(--stand);
+  --color-line: var(--line);
+  --color-gold: var(--gold);
+  --color-gold-lit: var(--gold-lit);
+  --color-gold-deep: var(--gold-deep);
+  --color-silver: var(--silver);
+  --color-chalk: var(--chalk);
+  --color-mute: var(--mute);
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
+
+  @keyframes spotlight {
+    0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+    100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+  }
+  @keyframes border-beam {
+    100% { offset-distance: 100%; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+}
+
+html {
+  background: var(--night);
+  color: var(--chalk);
+  scroll-behavior: smooth;
+  scrollbar-color: var(--gold-deep) var(--night);
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 100;
+  font-feature-settings: "tnum" 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--gold); color: var(--night); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+a { text-underline-offset: 0.22em; }
+
+/* Display voice: Archivo stretched to its widest cut, the same wide stance as
+   the BXP letters and stadium signage. */
+.display {
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+.wide { font-variation-settings: "wdth" 118; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Hero film: the poster is the ground; the film sits on it and steps aside for
+   reduced motion or data saving (handled in HeroFilm). */
+.hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(7,7,8,0.94) 0%, rgba(7,7,8,0.72) 38%, rgba(7,7,8,0.18) 72%, rgba(7,7,8,0.35) 100%),
+    linear-gradient(0deg, var(--night) 0%, transparent 34%);
+}
+@media (max-width: 767px) {
+  .hero-scrim {
+    background: linear-gradient(0deg, var(--night) 8%, rgba(7,7,8,0.78) 52%, rgba(7,7,8,0.45) 100%);
+  }
+}
+
+.cut-word { display: inline-block; overflow: hidden; padding-block: 0.06em; margin-block: -0.06em; vertical-align: top; }
+.cut-word > span { display: inline-block; animation: cutRise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes cutRise { from { transform: translateY(105%); } to { transform: none; } }
+
+/* The logo file sits on black; screen blending drops the black so the mark
+   floats on any dark ground, including the blurred nav. */
+.logo-screen { mix-blend-mode: screen; }
+
+/* Floodlight line: the one gold rule that runs under a section break. */
+.flood-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
