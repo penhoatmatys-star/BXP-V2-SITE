@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo } from "next/font/google";
 import { SITE } from "@/lib/site";
+import { CookieBanner } from "@/components/site/cookie-banner";
 import "./globals.css";
 
 // Archivo carries a width axis: the display voice runs it at its widest cut,
@@ -88,6 +89,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           Skip to content
         </a>
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

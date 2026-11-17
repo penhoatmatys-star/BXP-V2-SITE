@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail } from "lucide-react";
 import { SITE, mail } from "@/lib/site";
+import { CookieSettingsLink } from "@/components/site/cookie-banner";
 
 export function Organizations() {
   return (
@@ -79,7 +80,10 @@ export function Footer() {
           <a href="#programs" className="hover:text-gold">Programs</a>
           <a href={SITE.account} className="hover:text-gold">My BXP</a>
           <a href="#dna" className="hover:text-gold">BXP DNA</a>
-          <a href={SITE.terms} className="hover:text-gold">Terms &amp; privacy</a>
+          <a href="/privacy/" className="hover:text-gold">Privacy &amp; cookies</a>
+          <a href="/legal-notice/" className="hover:text-gold">Legal notice</a>
+          <a href={SITE.terms} className="hover:text-gold">Terms</a>
+          <CookieSettingsLink className="text-left uppercase tracking-[0.08em] hover:text-gold" />
         </nav>
       </div>
       <div className="border-t border-line">
