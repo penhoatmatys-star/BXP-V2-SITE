@@ -77,7 +77,7 @@ export function Footer() {
         <nav aria-label="Footer" className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm uppercase tracking-[0.08em] text-chalk/75">
           <a href="#discover" className="hover:text-gold">BXP Discover</a>
           <a href={SITE.apply} className="hover:text-gold">Apply</a>
-          <a href="#programs" className="hover:text-gold">Programs</a>
+          <a href="#programs" className="hover:text-gold">Products</a>
           <a href={SITE.account} className="hover:text-gold">My BXP</a>
           <a href="#dna" className="hover:text-gold">BXP DNA</a>
           <a href="/privacy/" className="hover:text-gold">Privacy &amp; cookies</a>

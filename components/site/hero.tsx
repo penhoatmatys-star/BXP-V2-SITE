@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import Magnetic from "@/components/ui/magnetic";
 import { SITE } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 /**
  * The hero ground: a 12 s film cut from BXP's own footage (the tunnel, a night
@@ -13,11 +14,16 @@ import { SITE } from "@/lib/site";
  */
 export function Hero() {
   const [film, setFilm] = useState(false);
+  // The corporate film (public/video/bxp-corporate.mp4). The player only shows once the
+  // file exists and its metadata has loaded, so a missing file never leaves a dead player.
+  const [corporate, setCorporate] = useState(false);
+  const corporateRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     setFilm(!reduce && !conn?.saveData);
+    if (corporateRef.current && corporateRef.current.readyState >= 1) setCorporate(true);
   }, []);
 
   return (
@@ -44,7 +50,29 @@ export function Hero() {
       </div>
       <div aria-hidden className="hero-scrim absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex w-full max-w-[1320px] flex-1 flex-col justify-end px-4 pb-8 pt-24 sm:px-6 md:pb-12 lg:px-10">
+      <div className="mx-auto grid w-full max-w-[1320px] flex-1 content-end gap-8 px-4 pb-8 pt-24 sm:px-6 md:pb-12 lg:grid-cols-[1fr_minmax(0,0.95fr)] lg:items-end lg:gap-12 lg:px-10">
+        {/* Who we are: the corporate film is the first thing seen (above the headline on a phone, beside it on a desktop). */}
+        {!corporate && <span id="who-we-are" aria-hidden />}
+        <figure
+          id={corporate ? "who-we-are" : undefined}
+          className={cn(
+            "scroll-mt-24 overflow-hidden rounded-xl border border-gold/30 bg-night shadow-[0_24px_80px_-20px_rgba(0,0,0,0.8)] lg:order-2",
+            !corporate && "hidden",
+          )}
+        >
+          <video
+            ref={corporateRef}
+            controls
+            playsInline
+            preload="metadata"
+            aria-label="BXP: who we are"
+            className="aspect-video w-full bg-night"
+            onLoadedMetadata={() => setCorporate(true)}
+          >
+            <source src="/video/bxp-corporate.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <div className={cn("lg:order-1", !corporate && "lg:col-span-2")}>
         {/* Vertical cut reveal (after 21st.dev "vertical-cut-reveal"), done in CSS so
             the headline, the page's LCP, never waits on JavaScript to appear. */}
         <h1 id="hero-title" className="display max-w-[14ch] text-[clamp(1.9rem,min(8.5vw,13vh),5.2rem)] uppercase">
@@ -79,6 +107,7 @@ export function Hero() {
           >
             What is Discover <ArrowDownRight aria-hidden className="size-5" />
           </a>
+        </div>
         </div>
       </div>
 

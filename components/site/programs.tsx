@@ -4,44 +4,40 @@ import { useState } from "react";
 import { ArrowUpRight, Radio } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { TiltCard } from "@/components/ui/tilt-card";
-import { mail } from "@/lib/site";
+import { SITE, mail } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-// The BXP app onboarding page: sign in or create an account, then set up the profile.
-const WELCOME = "https://bxpsport.com/app/welcome";
-
+// Three products. TODO: Weekly price and BXP Next description still to be supplied by BXP.
 const PROGRAMS = [
   {
-    id: "evolve",
-    name: "Evolve",
-    line: "Keep developing",
-    text: "Progressive programs focused on your physical, technical and mental priorities, after Discover and between seasons.",
-    href: WELCOME,
-    cta: "Join Evolve",
+    id: "weekly",
+    bg: "evolve",
+    name: "Weekly Program",
+    line: "With a coach",
+    price: null as string | null,
+    text: "A weekly program led by a coach, built around the BXP evaluation system.",
+    href: SITE.apply,
+    cta: "Apply",
   },
   {
-    id: "accelerate",
-    name: "Accelerate",
-    line: "Push further",
-    text: "An intensive pathway for development, performance and competitive exposure.",
-    href: WELCOME,
-    cta: "Join Accelerate",
+    id: "next",
+    bg: "accelerate",
+    name: "Next",
+    line: "After the Weekly",
+    price: "On request",
+    text: "The follow-up to the Weekly Program: the player moves to a new club, or goes back to play at his original club.",
+    href: mail("BXP Next information"),
+    cta: "Ask about Next",
   },
   {
-    id: "signature",
-    name: "Signature",
-    line: "Tailored support",
-    text: "Advanced individual support, with dedicated goals, professionals and timelines.",
-    href: WELCOME,
-    cta: "Join Signature",
-  },
-  {
-    id: "dna",
-    name: "DNA",
-    line: "Know your profile",
-    text: "Player data and staff assessments brought together into one structured development profile.",
-    href: "#dna",
-    cta: "See how DNA works",
+    id: "pro",
+    bg: "signature",
+    name: "Pro",
+    line: "Platform",
+    price: "Tailor-made",
+    text: "The BXP software platform in white label for institutions: clubs, academies and B2B partners. Also for families, groups and categories.",
+    href: mail("BXP Pro white label"),
+    cta: "Request BXP Pro",
   },
 ];
 
@@ -84,7 +80,7 @@ export function Programs() {
                   <div
                     aria-hidden
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(/img/programs/${p.id}.svg)` }}
+                    style={{ backgroundImage: `url(/img/programs/${p.bg}.svg)` }}
                   />
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-stand/90 via-stand/30 to-transparent" />
                   <div className="relative flex items-start justify-between gap-4">
@@ -100,7 +96,8 @@ export function Programs() {
                     )}
                   >
                     <div className="overflow-hidden">
-                      <p className="mt-4 max-w-[40ch] leading-relaxed text-chalk/80">{p.text}</p>
+                      {p.price && <p className="wide mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-silver">{p.price}</p>}
+                      <p className="mt-2 max-w-[40ch] leading-relaxed text-chalk/80">{p.text}</p>
                       <a
                         href={p.href}
                         className="wide mt-6 inline-flex items-center gap-1.5 border-b border-gold/60 pb-1 text-sm font-bold uppercase tracking-[0.08em] text-gold transition-colors hover:border-gold-lit hover:text-gold-lit"

@@ -6,11 +6,9 @@ import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "#discover", label: "Discover" },
-  { href: "#programs", label: "Programs" },
-  { href: "#welcome-pack", label: "Welcome Pack" },
-  { href: "#dna", label: "BXP DNA" },
-  { href: "#organizations", label: "Organizations" },
+  { href: "#who-we-are", label: "Who we are" },
+  { href: "#programs", label: "Products" },
+  { href: "#locations", label: "Locations" },
 ];
 
 export function Nav() {
